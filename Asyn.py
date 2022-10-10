@@ -7,8 +7,8 @@ class Task:
         self._exectime = exectime
 
     ## アイテムの作成
-    def make(self):
-        print("Task: make", self._title)
+    def create(self):
+        print("Task: create", self._title)
 
     ## アイテムの実行
     async def execute(self):
@@ -27,7 +27,7 @@ class Producer:
     ## キューにアイテム挿入
     async def run(self, queue):
         for task in self._tasks:
-            task.make()
+            task.create()
             await queue.put(task)
 
 class Consumer:

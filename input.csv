@@ -1,6 +1,11 @@
 # title, work
-task1, select * from task1
-task2, select * from task2
-task3, select * from task3
-task4, select * from task4
-task5, select * from task5
+task1, select * from table1
+task2, select * from table2
+task3, select * from table3
+task4, select * from table4
+task5, select * from table5
+task6, select * from teble6
+task7, select * from teble7
+task8, select * from teble8
+task9, select * from teble9
+task10, select * from teble10
