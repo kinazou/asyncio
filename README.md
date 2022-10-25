@@ -14,7 +14,9 @@ ProducerConsumerデザイン
 
 * CSVファイル読み込み機能
 
-## Requirement
+## Usage  
+　`pyhon3 MainTool.py -qs 5 -ic input.csv -ol output.log -os stat.log`  
+
 * -qs, --maxqueuesize  
 最大キューサイズの指定
 
@@ -26,9 +28,6 @@ ProducerConsumerデザイン
 
 * -os, --statistics
 出力統計ファイルの指定を想定
-
-## Usage  
-　`pyhon3 MainTool.py -qs 5 -ic input.csv -ol output.log -os stat.log`  
 
 ## Licence
 　MIT Licence
