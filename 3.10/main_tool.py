@@ -1,14 +1,14 @@
 import csv
-from Logger import Logger
-import Option
-import Asyn
+import option
+from logger import Logger
+from asyn import Coordinator, Task
 
 ## オプションの取得
-args = Option.get(5, 'input.csv', 'output.log', 'statistics.log')
+args = option.get(5, 'input.csv', 'output.log', 'statistics.log')
 ## ロガーの取得
 logger = Logger(args.outputlog, args.statistics)
 
-class ChildTask(Asyn.Task):
+class ChildTask(Task):
 
     def __init__(self, row):
         self._title = row[0]
@@ -44,7 +44,7 @@ def main():
     logger.loginfo('  Output Statistics : ' + str(args.statistics))
 
     tasks = make_tasks(args.inputcsv)
-    coordinator = Asyn.Coordinator(tasks, args.maxqueuesize)
+    coordinator = Coordinator(tasks, args.maxqueuesize)
     coordinator.run()
 
     logger.loginfo("Finish!!")
