@@ -1,27 +1,16 @@
+import sys
 import csv
 import option
+
+sys.path.append('.')
 from logger import Logger
-from asyn import Coordinator, Task
+#from v306.asyn import Coordinator, Task
+from v309.asyn import Coordinator, Task
 
 ## オプションの取得
 args = option.get(5, 'input.csv', 'output.log', 'statistics.log')
 ## ロガーの取得
 logger = Logger(args.outputlog, args.statistics)
-
-class ChildTask(Task):
-
-    def __init__(self, row):
-        self._title = row[0]
-        self._sql = row[1]
-
-    ## アイテムの作成
-    def create(self):
-        logger.loginfo("ChildTask: create ->{0}".format(self._sql))
-
-    ## アイテムの実行
-    async def execute(self):
-        logger.loginfo("ChildTask: execute ->{0}".format(self._sql))
-        return self._title
 
 ## タスクリストの生成
 def make_tasks(inputcsv):
@@ -31,7 +20,7 @@ def make_tasks(inputcsv):
     header = next(rows)
     logger.loginfo(header)
     for row in rows:
-        tasks.append(ChildTask(row))
+        tasks.append(Task(logger, row))
     return tasks
 
 ## メイン

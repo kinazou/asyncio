@@ -1,19 +1,22 @@
+# Python: Default Interpreter Path
+#  python
 import asyncio
 
 class Task:
 
-    def __init__(self, title = "", exectime = 3):
-        self._title = title
-        self._exectime = exectime
+    def __init__(self, logger, row):
+        self._logger = logger
+        self._title = row[0]
+        self._sql = row[1]
 
     ## アイテムの作成
     def create(self):
-        print("Task: create", self._title)
+        self._logger.loginfo("ChildTask: create ->{0}".format(self._sql))
 
     ## アイテムの実行
     async def execute(self):
-        print("Task: execute ->", self._title)
-        await asyncio.sleep(self._exectime)
+        await asyncio.sleep(1)
+        self._logger.loginfo("ChildTask: execute ->{}: {}s".format(self._sql, 1))
         return self._title
 
 class Producer:
@@ -62,7 +65,7 @@ class Consumer:
 class Coordinator:
 
     def __init__(self, tasks, maxqueuesize = 5, 
-                 producer = Producer(), consumer = Consumer()):
+                 consumer = Consumer(), producer = Producer()):
         producer.set_tasks(tasks)
         self._producer = producer
         self._consumer = consumer
