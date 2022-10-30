@@ -1,5 +1,5 @@
 # Python: Default Interpreter Path
-#  C:\\Users\\d-oka\\AppData\\Local\\Programs\\Python\\Python36
+#  C:\\Users\\XXX\\AppData\\Local\\Programs\\Python\\Python36
 import time
 import asyncio
 from threading import Thread

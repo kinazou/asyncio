@@ -15,7 +15,7 @@ logger = Logger(args.outputlog, args.statistics)
 ## タスクリストの生成
 def make_tasks(inputcsv):
     tasks = []
-    csv_file = open(args.inputcsv, "r", encoding="utf-8")
+    csv_file = open(inputcsv, "r", encoding="utf-8")
     rows = csv.reader(csv_file, delimiter=",", doublequote=True, lineterminator="\r\n", quotechar='"', skipinitialspace=True)
     header = next(rows)
     logger.loginfo(header)
